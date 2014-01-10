@@ -176,6 +176,8 @@
  */
 - (void)addMapAnnotations:(NSArray*)mapAnnotations;
 
+- (void)removeAllAnnotations;
+
 
 /** ---
  @name Centering the map 

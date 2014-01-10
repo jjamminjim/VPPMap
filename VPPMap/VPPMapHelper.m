@@ -581,6 +581,16 @@
 #pragma mark - Managing annotations
 // sets all annotations and initializes map.
 
+- (void)removeAllAnnotations {
+	// removes all previous annotations
+	NSArray *annotations = [NSArray arrayWithArray:self.mapView.annotations];
+	[self.mapView removeAnnotations:annotations];
+	
+    if (self.shouldClusterPins) {
+        [_unfilteredPins removeAllObjects];
+    }
+}
+
 - (void)setMapAnnotations:(NSArray*)mapAnnotations {
 	// removes all previous annotations
 	NSArray *annotations = [NSArray arrayWithArray:self.mapView.annotations];

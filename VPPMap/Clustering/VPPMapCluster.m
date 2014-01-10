@@ -43,11 +43,13 @@
     return self;
 }
 
+#if !__has_feature(objc_arc)
 - (void) dealloc {
     self.annotations = nil;
     
     [super dealloc];
 }
+#endif
 
 - (NSString *) title {
     return [NSString stringWithFormat:kAnnotationsNumber,[self.annotations count]];

@@ -55,12 +55,14 @@
     return self;
 }
 
+#if !__has_feature(objc_arc)
 - (void) dealloc {
     if (_label != nil) {
         [_label release];
     }
     [super dealloc];
 }
+#endif
 
 - (void) setTitle:(NSString *)title {
     _label.text = title;

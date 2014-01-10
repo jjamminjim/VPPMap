@@ -44,10 +44,12 @@
     return self;
 }
 
+#if !__has_feature(objc_arc)
 - (void) dealloc {
     self.mapView = nil;
     [super dealloc];
 }
+#endif
 
 - (float) approxDistanceCoord1:(CLLocationCoordinate2D)coord1 coord2:(CLLocationCoordinate2D)coord2 {
     //now properly convert this mapPoint to CGPoint 
@@ -151,7 +153,9 @@
                 [cluster.annotations addObjectsFromArray:neighbours];
                 [cluster.annotations addObject:ann];
                 [finalAnns addObject:cluster];
+#if !__has_feature(objc_arc)
                 [cluster release];
+#endif
             }
             
             [restOfAnnotations removeObjectsInArray:processed];
@@ -162,7 +166,9 @@
             block(finalAnns);
         }];
     }];
+#if !__has_feature(objc_arc)
     [q release];
+#endif
 }
 
 
